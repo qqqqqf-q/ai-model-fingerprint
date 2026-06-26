@@ -1,0 +1,30 @@
+# AI 模型指纹检测 —— 配置文件
+# 复制为 config.yaml 后填入你的信息（config.yaml 不要提交到 git）
+
+api:
+  # OpenRouter 兼容 OpenAI 接口；如用其它兼容网关也可改这里
+  base_url: https://openrouter.ai/api/v1
+  # 优先级: 此处 api_key > 环境变量 OPENROUTER_API_KEY
+  api_key: ""
+  # OpenRouter 建议附带的头（可留空）
+  http_referer: ""
+  x_title: "ai-fingerprint-test"
+
+sampling:
+  samples_per_model: 300   # 每个模型的有效样本数（原项目上限 500；越大指纹越稳）
+  concurrency: 8           # 并发请求数（OpenRouter 限流时调小）
+  max_retries: 4           # 单请求最大重试（含 429 退避）
+  request_timeout: 60      # 单请求超时秒数
+  # 数字范围（与原项目一致 1-355；改动会让指纹不可与官方基准对比）
+  range_min: 1
+  range_max: 355
+
+# 待测模型列表（OpenRouter 格式: provider/model）
+# 你可以把 base model name 列表粘到这里
+models:
+  # - openai/gpt-4o
+  # - anthropic/claude-3.5-sonnet
+  # - google/gemini-flash-1.5
+  # - meta-llama/llama-3.1-70b-instruct
+  # - deepseek/deepseek-chat
+  # - qwen/qwen-2.5-72b-instruct

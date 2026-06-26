@@ -1,0 +1,13 @@
+# ⚠️ 敏感 - 绝不上传 (含 API key)
+config.yaml
+
+# Python 环境
+.venv/
+__pycache__/
+*.pyc
+
+# 运行日志
+data/*.log
+
+# 本地 mock 测试配置
+mock_config.yaml
