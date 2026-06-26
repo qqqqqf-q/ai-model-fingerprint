@@ -25,6 +25,7 @@ sampling:
     x-ai/grok-build-0.1:       {reasoning_disabled: false, max_tokens: 2048}
     moonshotai/kimi-k2.7-code: {reasoning_disabled: false, max_tokens: 2048}
     google/gemini-3.5-flash:   {reasoning_disabled: false, max_tokens: 2048}
+    google/gemini-3-flash-preview: {reasoning_disabled: false, max_tokens: 2048}
 
 # 待测模型列表（OpenRouter 格式: provider/model）
 # 你可以把 base model name 列表粘到这里
