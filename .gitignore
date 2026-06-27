@@ -11,3 +11,6 @@ data/*.log
 
 # 本地 mock 测试配置
 mock_config.yaml
+run_anthropic.py
+plot_dasuapi_verification.py
+data/raw_dasuapi*
