@@ -39,6 +39,9 @@ FIG_DIR.mkdir(exist_ok=True)
 RANGE_MIN, RANGE_MAX = 1, 355
 K_BINS = 36  # 分布叠加图分箱数
 
+# 排除列表: 第三方中转站验证数据, 不参与指纹对比和图表
+EXCLUDE_PREFIXES = ("dasuapi_",)
+
 
 def extract_number_v2(text, lo: int, hi: int):
     """改进的提取: 用 raw 重新解析, 恢复 minimax 等'重复输出数字'的样本。
@@ -141,6 +144,9 @@ def main():
     models = {}  # name -> data
     for fp in files:
         name = fp.stem[len("raw_"):]
+        if any(name.startswith(p) for p in EXCLUDE_PREFIXES):
+            print(f"  [跳过] {name} (排除列表)")
+            continue
         m = load_model(fp)
         if m:
             models[name] = m
